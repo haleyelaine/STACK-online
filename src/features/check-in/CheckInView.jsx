@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import CheckedInSidebar from '../../components/CheckedInSidebar';
 import { useJumpers } from '../../contexts/JumpersContext';
 import { supabase } from '../../lib/supabaseClient';
@@ -11,6 +11,7 @@ function CheckInView() {
   const [search, setSearch] = useState('');
   const [isNew, setIsNew] = useState(false);
   const [groupEditData, setGroupEditData] = useState({ name: '', size: 1 });
+  const [allGroups, setAllGroups] = useState([]);
 
   const altitudeOptions = ['10K Tandem', '14K Tandem', '17K Tandem'];
   const mediaOptions = ['None', 'Video', 'Photos', 'Both', 'Undecided', 'Outside Video'];
@@ -81,6 +82,14 @@ function CheckInView() {
     await reload();
     setSelected(null);
   };
+
+  useEffect(() => {
+    async function fetchGroups() {
+      const { data, error } = await supabase.from('groups').select('group_name');
+      if (!error) setAllGroups(data.map(g => g.group_name));
+    }
+    fetchGroups();
+  }, []);
 
   return (
     <div className="flex flex-col bg-bg text-fg">
@@ -170,7 +179,7 @@ function CheckInView() {
                   onChange={(e) => setFormData({ ...formData, group_name: e.target.value || null })}
                 >
                   <option value="">-- Select Group --</option>
-                  {availableGroups.map((g, i) => (
+                  {allGroups.map((g, i) => (
                     <option key={i} value={g}>{g}</option>
                   ))}
                   <option value="Single Jumper">Single Jumper</option>
