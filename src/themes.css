@@ -1,0 +1,59 @@
+:root {
+  --bg: #ffffff;
+  --fg: #00a6a6;
+  --accent: #29b4b4;
+  --title: #111111;
+  --card: #ffffff;
+  --border: #e5e7eb;
+  --hover: #d9eae9;
+  --button: #28cbcb;
+  --button-text: #ffffff;
+  --slot-empty: #f9fafb;
+  --slot-filled: #ffffff;
+  --slot-border: #d1d5db;
+}
+
+[data-theme='Dark'] {
+  --bg: #000000;
+  --fg: #70b600;
+  --accent: #00598c;
+  --title: #e5e7eb;
+  --card: #374151;
+  --border: #4b5563;
+  --hover: #a8b9d2;
+  --button: #3b82f6;
+  --button-text: #ffffff;
+  --slot-empty: #334155;
+  --slot-filled: #1e293b;
+  --slot-border: #64748b;
+}
+
+[data-theme='Emerald'] {
+  --bg: #fefefe;
+  --fg: #075700;
+  --accent: #075700;
+  --title: #064e3b;
+  --card: #ecfdf5;
+  --border: #7fc67d;
+  --hover: #c9e6cd;
+  --button: #008129;
+  --button-text: #ffffff;
+  --slot-empty: #f0fdf4;
+  --slot-filled: #1b511d;
+  --slot-border: #215d23;
+}
+
+[data-theme='Pink'] {
+  --bg: #fdfdfd;
+  --fg: #a33f57;
+  --accent: #81203c;
+  --title: #7f152e;
+  --card: #fff5f7;
+  --border: #a54752;
+  --hover: #f5baba;
+  --button: #a33f57;
+  --button-text: #ffffff;
+  --slot-empty: #f3e9ec;
+  --slot-filled: #fbcfe8;
+  --slot-border: #a54752;
+}
