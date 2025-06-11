@@ -134,35 +134,57 @@ function CheckInView() {
           <div className="bg-white text-black p-6 rounded shadow-lg w-[28rem]">
             <h3 className="text-xl font-bold mb-4">Jumper Info</h3>
             <div className="space-y-2">
-              <label className="text-sm text-gray-600 mb-0 block">Name</label>
-              <input className="input w-full border rounded-md px-1" placeholder="Name" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} />
-              <input className="input w-full border rounded-md px-1" placeholder="Email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} />
-              <select className="input w-full border rounded-md px-1" value={formData.altitude} onChange={(e) => setFormData({ ...formData, altitude: e.target.value })}>
-                {altitudeOptions.map((alt, i) => <option key={i}>{alt}</option>)}
-              </select>
-              <select className="input w-full border rounded-md px-1" value={formData.media} onChange={(e) => setFormData({ ...formData, media: e.target.value })}>
-                {mediaOptions.map((m, i) => <option key={i}>{m}</option>)}
-              </select>
-              <input className="input w-full border rounded-md px-1" placeholder="Weight" type="number" value={formData.weight || ''} onChange={(e) => setFormData({ ...formData, weight: e.target.value })} />
-              <textarea className="textarea w-full border rounded-md px-1" placeholder="Notes" value={formData.notes || ''} onChange={(e) => setFormData({ ...formData, notes: e.target.value })} />
-              <select
-                className="input input-bordered w-full"
-                value={formData.group_name || ''}
-                onChange={(e) => setFormData({ ...formData, group_name: e.target.value || null })}
-              >
-                <option value="">-- Select Group --</option>
-                {availableGroups.map((g, i) => (
-                  <option key={i} value={g}>{g}</option>
-                ))}
-                <option value="Single Jumper">Single Jumper</option>
-                <option value="New Group">+ Create New Group</option>
-              </select>
-              {formData.group_name === 'New Group' && (
-                <>
-                  <input className="input input-bordered border px-1 rounded-md w-full mb-2" value={groupEditData.name || ''} onChange={(e) => setGroupEditData({ ...groupEditData, name: e.target.value })} placeholder="Group Name" />
-                  <input className="input input-bordered border rounded-md px-1 w-full" type="number" value={groupEditData.size || 1} onChange={(e) => setGroupEditData({ ...groupEditData, size: parseInt(e.target.value) || 1 })} placeholder="Group Size" />
-                </>
-              )}
+              <div>
+                <label className="text-sm text-gray-600">Name</label>
+                <input className="input w-full border rounded-md px-1" placeholder="Name" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} />
+              </div>
+              <div>
+                <label className="text-sm text-gray-600">Email</label>
+                <input className="input w-full border rounded-md px-1" placeholder="Email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} />
+              </div>
+              <div>
+                <label className="text-sm text-gray-600">Altitude</label>
+                <select className="input w-full border rounded-md px-1" value={formData.altitude} onChange={(e) => setFormData({ ...formData, altitude: e.target.value })}>
+                  {altitudeOptions.map((alt, i) => <option key={i}>{alt}</option>)}
+                </select>
+              </div>
+              <div>
+                <label className="text-sm text-gray-600">Media</label>
+                <select className="input w-full border rounded-md px-1" value={formData.media} onChange={(e) => setFormData({ ...formData, media: e.target.value })}>
+                  {mediaOptions.map((m, i) => <option key={i}>{m}</option>)}
+                </select>
+              </div>
+              <div>
+                <label className="text-sm text-gray-600">Weight</label>
+                <input className="input w-full border rounded-md px-1" placeholder="Weight" type="number" value={formData.weight || ''} onChange={(e) => setFormData({ ...formData, weight: e.target.value })} />
+              </div>
+              <div>
+                <label className="text-sm text-gray-600">Notes</label>
+                <textarea className="textarea w-full border rounded-md px-1" placeholder="Notes" value={formData.notes || ''} onChange={(e) => setFormData({ ...formData, notes: e.target.value })} />
+              </div>
+              <div>
+                <label className="text-sm text-gray-600">Group</label>
+                <select
+                  className="input input-bordered w-full"
+                  value={formData.group_name || ''}
+                  onChange={(e) => setFormData({ ...formData, group_name: e.target.value || null })}
+                >
+                  <option value="">-- Select Group --</option>
+                  {availableGroups.map((g, i) => (
+                    <option key={i} value={g}>{g}</option>
+                  ))}
+                  <option value="Single Jumper">Single Jumper</option>
+                  <option value="New Group">+ Create New Group</option>
+                </select>
+                {formData.group_name === 'New Group' && (
+                  <>
+                    <label className="text-sm text-gray-600">New Group Name</label>
+                    <input className="input input-bordered border px-1 rounded-md w-full mb-2" value={groupEditData.name || ''} onChange={(e) => setGroupEditData({ ...groupEditData, name: e.target.value })} placeholder="Group Name" />
+                    <label className="text-sm text-gray-600">Group Size</label>
+                    <input className="input input-bordered border rounded-md px-1 w-full" type="number" value={groupEditData.size || 1} onChange={(e) => setGroupEditData({ ...groupEditData, size: parseInt(e.target.value) || 1 })} placeholder="Group Size" />
+                  </>
+                )}
+              </div>
             </div>
             <div className="flex justify-between mt-4">
               <button className="btn bg-title rounded-md px-2 py-1 text-white" onClick={handleDelete}>Delete</button>

@@ -17,9 +17,9 @@ function DraggableJumper({ jumper, handleEditClick, handleRemove, groupName, gro
     >
       <div className="p-4 flex bg-bg flex-row justify-between rounded-md items-center">
   <div>
-    <p className="text-sm font-medium">{jumper.name}</p>
-    <p className="text-xs text-fg/70">{groupName || 'No Group'}</p>
-    <p className="text-xs text-fg/70">{jumper.weight ? `${jumper.weight} lbs` : 'lbs'}</p>
+    <p className="text-lg font-bold">{jumper.name}</p>
+    <p className="text-s text-fg/70">{groupName || 'No Group'}</p>
+    <p className="text-s text-fg/70">{jumper.weight ? `${jumper.weight} lbs` : 'lbs'}</p>
   </div>
   <button
     onClick={async (e) => {
